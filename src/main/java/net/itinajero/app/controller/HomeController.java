@@ -72,7 +72,8 @@ public class HomeController {
 			pelicula2.setClasificacion("A");
 			pelicula2.setGenero("INfantil");
 			pelicula2.setFechaEstreno(formatter.parse("02-05-2019"));
-			
+			pelicula2.setImagen("beautyBeast.jpg");
+						
 			Pelicula pelicula3 = new Pelicula();
 			pelicula3.setId(1);
 			pelicula3.setTitulo("Against Time");
@@ -80,10 +81,22 @@ public class HomeController {
 			pelicula3.setClasificacion("B");
 			pelicula3.setGenero("Tgriller");
 			pelicula3.setFechaEstreno(formatter.parse("02-05-2019"));
+			pelicula3.setImagen("fast.jpg");
+			
+			Pelicula pelicula4 = new Pelicula();
+			pelicula4.setId(1);
+			pelicula4.setTitulo("Against Time");
+			pelicula4.setDuracion(106);
+			pelicula4.setClasificacion("B");
+			pelicula4.setGenero("Tgriller");
+			pelicula4.setFechaEstreno(formatter.parse("02-05-2019"));
+			pelicula4.setImagen("king.jpg");
+			pelicula4.setStattus("inactiva");
 			
 			list.add(pelicula1);
 			list.add(pelicula2);
 			list.add(pelicula3);
+			list.add(pelicula4);
 			
 			return list;
 		} catch(Exception e) {
@@ -94,3 +107,4 @@ public class HomeController {
 	}
 	
 }
+
