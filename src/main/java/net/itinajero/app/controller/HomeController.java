@@ -2,11 +2,13 @@ package net.itinajero.app.controller;
 
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -15,6 +17,8 @@ import net.itinajero.app.model.Pelicula;
 
 @Controller
 public class HomeController {
+	
+	private SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
 
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String goHome(){
@@ -30,14 +34,17 @@ public class HomeController {
 		// peliculas.add("fast and.."); peliculas.add("the ring 2");
 		// peliculas.add("Aliens"); peliculas.add("the nun");
 		
-		
+		model.addAttribute("fechaBusqueda", this.dateformat.format(new Date( )) );
 		model.addAttribute("peliculas", peliculas);
 		
 		return "home";
 	}	
 	
-	@RequestMapping(value="/detail")
-	public String mostrarDetalle(Model model) {
+	@RequestMapping(value="/detail/{id}", method=RequestMethod.GET)
+	public String mostrarDetalle(Model model,@PathVariable("id") int idPelicula) {
+		
+		System.out.println("el id es " + idPelicula);
+		
 		String tituloPelicula = "Fast and Furios";
 		int duracion = 136;
 		double precioEntrada = 50;
@@ -66,7 +73,7 @@ public class HomeController {
 			pelicula1.setFechaEstreno(formatter.parse("02-05-2019"));
 			
 			Pelicula pelicula2 = new Pelicula();
-			pelicula2.setId(1);
+			pelicula2.setId(2);
 			pelicula2.setTitulo("Beuty and the Beast");
 			pelicula2.setDuracion(140);
 			pelicula2.setClasificacion("A");
@@ -75,7 +82,7 @@ public class HomeController {
 			pelicula2.setImagen("beautyBeast.jpg");
 						
 			Pelicula pelicula3 = new Pelicula();
-			pelicula3.setId(1);
+			pelicula3.setId(3);
 			pelicula3.setTitulo("Against Time");
 			pelicula3.setDuracion(106);
 			pelicula3.setClasificacion("B");
@@ -84,7 +91,7 @@ public class HomeController {
 			pelicula3.setImagen("fast.jpg");
 			
 			Pelicula pelicula4 = new Pelicula();
-			pelicula4.setId(1);
+			pelicula4.setId(4);
 			pelicula4.setTitulo("Against Time");
 			pelicula4.setDuracion(106);
 			pelicula4.setClasificacion("B");
